@@ -12,7 +12,7 @@ public class Number {
         this.value = value;
     }
 
-    public static Number of(int value) {
+    public static Number valueOf(int value) {
         Validator.validate(value);
         return new Number(value);
     }

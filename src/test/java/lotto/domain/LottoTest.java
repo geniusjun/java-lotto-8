@@ -9,13 +9,13 @@ class LottoTest {
     @Test
     void 로또_번호의_개수가_6개가_넘어가면_예외가_발생한다() {
         assertThatThrownBy(() -> Lotto.from(List.of(
-                Number.of(1),
-                Number.of(2),
-                Number.of(3),
-                Number.of(4),
-                Number.of(5),
-                Number.of(6),
-                Number.of(7))))
+                Number.valueOf(1),
+                Number.valueOf(2),
+                Number.valueOf(3),
+                Number.valueOf(4),
+                Number.valueOf(5),
+                Number.valueOf(6),
+                Number.valueOf(7))))
                 .isInstanceOf(IllegalArgumentException.class);
 
     }

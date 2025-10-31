@@ -13,7 +13,7 @@ public class CostTest {
     @ValueSource(strings = {"1000", "3000", "1000000"})
     void 비용_생성_테스트(String input) {
         // given // when
-        Cost cost = Cost.of(input);
+        Cost cost = Cost.from(input);
         // then
         Assertions.assertThat(cost).isNotNull();
     }
@@ -24,9 +24,9 @@ public class CostTest {
     void 비용_생성_실패_테스트(String input) {
         // given // when // then
         Assertions.assertThatThrownBy(() -> {
-                    Cost.of(input);
+                    Cost.from(input);
                 }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ErrorMessage.INVALID_UNIT_ERROR.getMessage());
     }
-    
+
 }
