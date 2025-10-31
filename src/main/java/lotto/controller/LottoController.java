@@ -15,7 +15,16 @@ public class LottoController {
     }
 
     public void play() {
-        outputView.printlnMessage(COST_REQUEST_MESSAGE.getMessage());
-        int price = Integer.parseInt(inputView.enterMessage());
+        requestCost();
+    }
+
+    private int requestCost() {
+        try {
+            outputView.printlnMessage(COST_REQUEST_MESSAGE.getMessage());
+            return Integer.parseInt(inputView.enterMessage());
+        } catch (IllegalArgumentException e) {
+            outputView.printlnMessage(e.getMessage());
+            return requestCost();
+        }
     }
 }
