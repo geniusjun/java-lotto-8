@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import static lotto.global.constans.ErrorMessage.INVALID_UNIT_ERROR;
+import static lotto.global.constans.NumberType.COST_UNIT;
 
 import lotto.global.Parser;
 
@@ -29,7 +30,7 @@ public class Cost {
         }
 
         private static boolean isNotDivisible(int value) {
-            return value % 1000 != 0;
+            return value % COST_UNIT.getValue() != 0;
         }
     }
 }
