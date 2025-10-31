@@ -1,5 +1,8 @@
 package lotto.domain;
 
+import static lotto.global.constans.ErrorMessage.INVALID_LOTTO_SIZE_ERROR;
+import static lotto.global.constans.ErrorMessage.NUMBER_DUPLICATE_ERROR;
+
 import java.util.List;
 
 public class Lotto {
@@ -16,9 +19,31 @@ public class Lotto {
 
     private static class Validator {
         private static void validate(List<Number> numbers) {
+            validateLottoSize(numbers);
+            validateDuplicate(numbers);
+        }
+
+        private static void validateLottoSize(List<Number> numbers) {
             if (numbers.size() != 6) {
-                throw new IllegalArgumentException("[ERROR] 로또 번호는 6개여야 합니다.");
+                throw new IllegalArgumentException(INVALID_LOTTO_SIZE_ERROR.getMessage());
             }
+        }
+
+        private static void validateDuplicate(List<Number> numbers) {
+            if (isDuplicated(numbers)) {
+                throw new IllegalArgumentException(NUMBER_DUPLICATE_ERROR.getMessage());
+            }
+        }
+
+        private static boolean isDuplicated(List<Number> numbers) {
+            return getUniqueSize(numbers) != numbers.size();
+        }
+
+        private static int getUniqueSize(List<Number> numbers) {
+            return (int) numbers
+                    .stream()
+                    .distinct()
+                    .count();
         }
     }
 
