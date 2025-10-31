@@ -3,7 +3,8 @@ package lotto.global.constans;
 public enum ErrorMessage {
     BLANK_INPUT_ERROR("빈 문자열이 입력되었습니다."),
     NUMBER_FORMAT_ERROR("숫자 형식이 아닙니다."),
-    INVALID_UNIT_ERROR("1000원 단위의 숫자만 입력해주세요.");
+    INVALID_UNIT_ERROR("1000원 단위의 숫자만 입력해주세요."),
+    INVALID_RANGE_ERROR("올바르지 않은 범위의 숫자입니다.");
 
     private static final String PREFIX = "[ERROR] ";
     private String message;
