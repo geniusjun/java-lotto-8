@@ -1,6 +1,6 @@
 package lotto.controller;
 
-import static lotto.global.MessageType.COST_REQUEST_MESSAGE;
+import static lotto.global.constans.MessageType.COST_REQUEST_MESSAGE;
 
 import lotto.view.InputView;
 import lotto.view.OutputView;
