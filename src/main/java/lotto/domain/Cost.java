@@ -16,6 +16,10 @@ public class Cost {
         return new Cost(Validator.validate(message));
     }
 
+    public int getCount() {
+        return price / COST_UNIT.getValue();
+    }
+
     private static class Validator {
         public static int validate(String cost) {
             int value = Parser.StringToInt(cost);
