@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 class LottoTest {
     @Test
     void 로또_번호의_개수가_6개가_넘어가면_예외가_발생한다() {
-        assertThatThrownBy(() -> new Lotto(List.of(
+        assertThatThrownBy(() -> Lotto.from(List.of(
                 Number.of(1),
                 Number.of(2),
                 Number.of(3),

@@ -5,14 +5,20 @@ import java.util.List;
 public class Lotto {
     private final List<Number> numbers;
 
-    public Lotto(List<Number> numbers) {
-        validate(numbers);
+    private Lotto(List<Number> numbers) {
+        Validator.validate(numbers);
         this.numbers = numbers;
     }
 
-    private void validate(List<Number> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개여야 합니다.");
+    public static Lotto from(List<Number> numbers) {
+        return new Lotto(numbers);
+    }
+
+    private static class Validator {
+        private static void validate(List<Number> numbers) {
+            if (numbers.size() != 6) {
+                throw new IllegalArgumentException("[ERROR] 로또 번호는 6개여야 합니다.");
+            }
         }
     }
 
