@@ -16,13 +16,13 @@ public class LottoController {
     }
 
     public void play() {
-
+        Cost cost = requestCost();
     }
 
     private Cost requestCost() {
         try {
             outputView.printlnMessage(COST_REQUEST_MESSAGE.getMessage());
-            return Cost.from(inputView.enterMessage());
+            return Cost.of(inputView.enterMessage());
         } catch (IllegalArgumentException e) {
             outputView.printlnMessage(e.getMessage());
             return requestCost();

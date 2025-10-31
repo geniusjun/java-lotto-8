@@ -12,7 +12,7 @@ public class Cost {
         this.price = price;
     }
 
-    public static Cost from(String message) {
+    public static Cost of(String message) {
         return new Cost(Validator.validate(message));
     }
 
