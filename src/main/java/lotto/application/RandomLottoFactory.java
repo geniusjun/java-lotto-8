@@ -11,7 +11,7 @@ import lotto.domain.Number;
 
 public class RandomLottoFactory implements LottoFactory {
     @Override
-    public Lotto creat() {
+    public Lotto create() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(
                 MIN_LOTTO_NUMBER.getValue(),
                 MAX_LOTTO_NUMBER.getValue(),
