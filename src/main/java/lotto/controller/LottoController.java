@@ -2,6 +2,7 @@ package lotto.controller;
 
 import static lotto.global.constans.MessageType.COST_REQUEST_MESSAGE;
 
+import lotto.domain.Cost;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -15,13 +16,13 @@ public class LottoController {
     }
 
     public void play() {
-        requestCost();
+
     }
 
-    private int requestCost() {
+    private Cost requestCost() {
         try {
             outputView.printlnMessage(COST_REQUEST_MESSAGE.getMessage());
-            return Integer.parseInt(inputView.enterMessage());
+            return Cost.from(inputView.enterMessage());
         } catch (IllegalArgumentException e) {
             outputView.printlnMessage(e.getMessage());
             return requestCost();
