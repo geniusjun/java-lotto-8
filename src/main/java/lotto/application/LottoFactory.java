@@ -1,4 +1,4 @@
-package lotto.application.port;
+package lotto.application;
 
 import lotto.domain.Lotto;
 
