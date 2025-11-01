@@ -19,14 +19,8 @@ public class Lotto {
 
     private static class Validator {
         private static void validate(List<Number> numbers) {
-            validateLottoSize(numbers);
             validateDuplicate(numbers);
-        }
-
-        private static void validateLottoSize(List<Number> numbers) {
-            if (numbers.size() != 6) {
-                throw new IllegalArgumentException(INVALID_LOTTO_SIZE_ERROR.getMessage());
-            }
+            validateLottoSize(numbers);
         }
 
         private static void validateDuplicate(List<Number> numbers) {
@@ -44,6 +38,12 @@ public class Lotto {
                     .stream()
                     .distinct()
                     .count();
+        }
+
+        private static void validateLottoSize(List<Number> numbers) {
+            if (numbers.size() != 6) {
+                throw new IllegalArgumentException(INVALID_LOTTO_SIZE_ERROR.getMessage());
+            }
         }
     }
 

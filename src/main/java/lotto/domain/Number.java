@@ -3,6 +3,7 @@ package lotto.domain;
 import static lotto.global.constans.NumberType.MAX_LOTTO_NUMBER;
 import static lotto.global.constans.NumberType.MIN_LOTTO_NUMBER;
 
+import java.util.Objects;
 import lotto.global.constans.ErrorMessage;
 
 public class Number {
@@ -10,6 +11,20 @@ public class Number {
 
     private Number(int value) {
         this.value = value;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Number number = (Number) o;
+        return value == number.value;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(value);
     }
 
     public static Number valueOf(int value) {
