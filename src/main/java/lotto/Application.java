@@ -1,17 +1,11 @@
 package lotto;
 
-import lotto.application.RandomLottoFactory;
+import lotto.config.AppConfig;
 import lotto.controller.LottoController;
-import lotto.view.InputView;
-import lotto.view.OutputView;
 
 public class Application {
     public static void main(String[] args) {
-        OutputView outputView = new OutputView();
-        InputView inputView = new InputView();
-        RandomLottoFactory lottoFactory = new RandomLottoFactory();
-
-        LottoController lottoController = new LottoController(outputView, inputView, lottoFactory);
+        LottoController lottoController = new AppConfig().lottoController();
         lottoController.play();
     }
 }

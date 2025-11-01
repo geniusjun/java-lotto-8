@@ -5,7 +5,7 @@ import static lotto.global.constans.MessageType.LOTTO_COUNT_MESSAGE;
 
 import java.util.ArrayList;
 import java.util.List;
-import lotto.application.LottoFactory;
+import lotto.application.LottoService;
 import lotto.domain.Cost;
 import lotto.domain.Lotto;
 import lotto.domain.Lottos;
@@ -15,12 +15,12 @@ import lotto.view.OutputView;
 public class LottoController {
     private final OutputView outputView;
     private final InputView inputView;
-    private final LottoFactory lottoFactory;
+    private final LottoService lottoService;
 
-    public LottoController(OutputView outputView, InputView inputView, LottoFactory lottoFactory) {
+    public LottoController(OutputView outputView, InputView inputView, LottoService lottoService) {
         this.outputView = outputView;
         this.inputView = inputView;
-        this.lottoFactory = lottoFactory;
+        this.lottoService = lottoService;
     }
 
     public void play() {
@@ -51,7 +51,7 @@ public class LottoController {
         outputView.printlnMessage(String.format(LOTTO_COUNT_MESSAGE.getMessage(), cost.getCount()));
         List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < cost.getCount(); i++) {
-            lottos.add(lottoFactory.create());
+            //lottos.add(lottoFactory.create());
         }
         return Lottos.from(lottos);
     }
