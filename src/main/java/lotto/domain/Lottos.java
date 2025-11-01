@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Lottos {
     private List<Lotto> lottos;
@@ -11,5 +12,9 @@ public class Lottos {
 
     public static Lottos from(List<Lotto> lottos) {
         return new Lottos(lottos);
+    }
+
+    public Stream<Lotto> getStream() {
+        return lottos.stream();
     }
 }
