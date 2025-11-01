@@ -1,7 +1,8 @@
 package lotto.application;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import lotto.domain.Cost;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -23,9 +24,9 @@ public class LottoServiceTest {
         Cost cost = Cost.from(price);
 
         // when // then
-        Assertions.assertThat(lottoService.buyLottos(cost)
-                        .getStream()
-                        .count())
+        assertThat(lottoService.buyLottos(cost)
+                .getStream()
+                .count())
                 .isEqualTo(count);
     }
 }
