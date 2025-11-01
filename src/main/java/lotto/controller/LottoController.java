@@ -1,13 +1,9 @@
 package lotto.controller;
 
 import static lotto.global.constans.MessageType.COST_REQUEST_MESSAGE;
-import static lotto.global.constans.MessageType.LOTTO_COUNT_MESSAGE;
 
-import java.util.ArrayList;
-import java.util.List;
 import lotto.application.LottoService;
 import lotto.domain.Cost;
-import lotto.domain.Lotto;
 import lotto.domain.Lottos;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -40,19 +36,10 @@ public class LottoController {
 
     private Lottos lottoBuy(Cost cost) {
         try {
-            return makeLottos(cost);
+            return lottoService.buyLottos(cost);
         } catch (IllegalArgumentException e) {
             outputView.printlnMessage(e.getMessage());
             return lottoBuy(cost);
         }
-    }
-
-    private Lottos makeLottos(Cost cost) {
-        outputView.printlnMessage(String.format(LOTTO_COUNT_MESSAGE.getMessage(), cost.getCount()));
-        List<Lotto> lottos = new ArrayList<>();
-        for (int i = 0; i < cost.getCount(); i++) {
-            //lottos.add(lottoFactory.create());
-        }
-        return Lottos.from(lottos);
     }
 }
