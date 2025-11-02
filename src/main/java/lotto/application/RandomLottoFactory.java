@@ -17,10 +17,10 @@ public class RandomLottoFactory implements LottoFactory {
                 MAX_LOTTO_NUMBER.getValue(),
                 LOTTO_SIZE.getValue()
         );
-        return Lotto.from(IntegerToNumber(numbers));
+        return Lotto.from(integerToNumber(numbers));
     }
 
-    private static List<Number> IntegerToNumber(List<Integer> numbers) {
+    private static List<Number> integerToNumber(List<Integer> numbers) {
         return numbers.stream()
                 .map(Number::valueOf)
                 .toList();
