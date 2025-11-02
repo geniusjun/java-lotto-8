@@ -14,10 +14,6 @@ public final class Bonus {
         return new Bonus(bonus);
     }
 
-    public Number getValue() {
-        return value;
-    }
-
     private static class Validator {
         private static void validateDuplicate(Number bonus, Lotto winning) {
             if (isDuplicated(bonus, winning)) {

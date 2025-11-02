@@ -5,6 +5,7 @@ import static lotto.global.constans.MessageType.COST_REQUEST_MESSAGE;
 import static lotto.global.constans.MessageType.WINNING_REQUEST_MESSAGE;
 
 import lotto.application.LottoService;
+import lotto.domain.Bonus;
 import lotto.domain.Cost;
 import lotto.domain.Lotto;
 import lotto.domain.Lottos;
@@ -54,7 +55,7 @@ public class LottoController {
 
     private WinningNumbers askWinningNumbers() {
         Lotto winning = askWinningLotto();
-        Number bonus = askBonusNumber(winning);
+        Bonus bonus = askBonus(winning);
         return WinningNumbers.of(winning, bonus);
     }
 
@@ -63,9 +64,11 @@ public class LottoController {
                 () -> Lotto.from(Parser.stringToNumbers(inputView.enterMessage())));
     }
 
-    private Number askBonusNumber(Lotto winning) {
-        return loop.ask(BONUS_REQUEST_MESSAGE.getMessage(),
-                () -> Number.valueOf(Parser.stringToInt(inputView.enterMessage())));
+    private Bonus askBonus(Lotto winning) {
+        return loop.ask(BONUS_REQUEST_MESSAGE.getMessage(), () -> {
+            Number number = Number.valueOf(Parser.stringToInt(inputView.enterMessage()));
+            return Bonus.of(number, winning);
+        });
     }
 
 }
