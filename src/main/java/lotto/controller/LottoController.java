@@ -4,7 +4,6 @@ import static lotto.global.constans.MessageType.BONUS_REQUEST_MESSAGE;
 import static lotto.global.constans.MessageType.COST_REQUEST_MESSAGE;
 import static lotto.global.constans.MessageType.WINNING_REQUEST_MESSAGE;
 
-import java.util.List;
 import lotto.application.LottoService;
 import lotto.domain.Cost;
 import lotto.domain.Lotto;
@@ -31,29 +30,21 @@ public class LottoController {
     }
 
     public void play() {
-        Cost cost = requestCost();
-        Lottos lottos = lottoBuy(cost);
+        Cost cost = loop.ask(COST_REQUEST_MESSAGE.getMessage(),
+                () -> Cost.from(inputView.enterMessage()));
+        Lottos lottos = lottoService.buyLottos(cost);
         showLottos(lottos);
-        WinningNumbers numbers = WinningNumbers.of(requestWinningNumber(), requestBonusNumber());
-    }
 
-    private Cost requestCost() {
-        try {
-            outputView.printlnMessage(COST_REQUEST_MESSAGE.getMessage());
-            return Cost.from(inputView.enterMessage());
-        } catch (IllegalArgumentException e) {
-            outputView.printlnMessage(e.getMessage());
-            return requestCost();
-        }
-    }
+        Lotto winning = loop.ask(WINNING_REQUEST_MESSAGE.getMessage(),
+                () -> Lotto.from(Parser.stringToNumbers(inputView.enterMessage())));
 
-    private Lottos lottoBuy(Cost cost) {
-        try {
-            return lottoService.buyLottos(cost);
-        } catch (IllegalArgumentException e) {
-            outputView.printlnMessage(e.getMessage());
-            return lottoBuy(cost);
-        }
+        Number bonus = loop.ask(BONUS_REQUEST_MESSAGE.getMessage(), () -> {
+            Number b = Number.valueOf(Parser.StringToInt(inputView.enterMessage()));
+            WinningNumbers.of(winning, b);
+            return b;
+        });
+
+        WinningNumbers numbers = WinningNumbers.of(winning, bonus);
     }
 
     private void showLottos(Lottos lottos) {
@@ -61,27 +52,4 @@ public class LottoController {
         outputView.printLottos(lottos);
     }
 
-
-    private Lotto requestWinningNumber() {
-        try {
-            outputView.printlnMessage(WINNING_REQUEST_MESSAGE.getMessage());
-            List<Number> numbers = Parser.stringToNumbers(inputView.enterMessage());
-            return Lotto.from(numbers);
-        } catch (IllegalArgumentException e) {
-            outputView.printlnMessage(e.getMessage());
-            return requestWinningNumber();
-        }
-    }
-
-    private Number requestBonusNumber() {
-        try {
-            outputView.printlnMessage(BONUS_REQUEST_MESSAGE.getMessage());
-            int number = Parser.StringToInt(inputView.enterMessage());
-            return Number.valueOf(number);
-        } catch (IllegalArgumentException e) {
-            outputView.printlnMessage(e.getMessage());
-            return requestBonusNumber();
-        }
-
-    }
 }
