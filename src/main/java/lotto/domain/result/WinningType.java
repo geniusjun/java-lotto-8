@@ -28,10 +28,6 @@ public enum WinningType {
         return label;
     }
 
-    public boolean printable() {
-        return this != NONE;
-    }
-
     /**
      * 주어진 비교 결과에 가장 먼저 부합하는 등수를 반환한다. - 각 상수에 저장된 rule.test(result)를 순서대로 평가한다. - 어느 등수에도 해당하지 않으면 NONE을 반환한다.
      */
@@ -44,7 +40,7 @@ public enum WinningType {
         return NONE;
     }
 
-    private static Predicate<MatchResult> exactly(int n) {
-        return result -> result.matchedCount() == n;
+    private static Predicate<MatchResult> exactly(int number) {
+        return result -> result.matchedCount() == number;
     }
 }
