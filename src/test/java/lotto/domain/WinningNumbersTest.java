@@ -23,12 +23,16 @@ class WinningNumbersTest {
     @ParameterizedTest(name = "당첨:[1,2,3,4,5,6] 보너스:7 / {0} → {1}")
     @MethodSource("cases")
     void 비교_확인결과_테스트(List<Number> ticket, WinningType expected) {
+
+        // given
         Lotto winning = Lotto.from(nums(1, 2, 3, 4, 5, 6));
         WinningNumbers winningNumbers = WinningNumbers.of(winning, Bonus.of(Number.valueOf(7), winning));
 
+        // when
         MatchResult result = winningNumbers.compare(Lotto.from(ticket));
         WinningType actual = WinningType.from(result);
 
+        // then
         assertThat(actual).isEqualTo(expected);
     }
 

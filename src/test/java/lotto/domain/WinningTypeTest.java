@@ -23,7 +23,10 @@ public class WinningTypeTest {
             "6,true,FIRST"
     })
     void 결과_테스트(int matched, boolean bonus, WinningType expected) {
+        // given // when
         MatchResult result = MatchResult.of(matched, bonus);
+
+        // then
         assertThat(WinningType.from(result)).isEqualTo(expected);
     }
 }
