@@ -7,7 +7,7 @@ public class Lottos {
     private List<Lotto> lottos;
 
     private Lottos(List<Lotto> lottos) {
-        this.lottos = lottos;
+        this.lottos = List.copyOf(lottos);
     }
 
     public static Lottos from(List<Lotto> lottos) {

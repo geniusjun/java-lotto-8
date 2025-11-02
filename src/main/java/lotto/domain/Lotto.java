@@ -10,7 +10,7 @@ public class Lotto {
 
     private Lotto(List<Number> numbers) {
         Validator.validate(numbers);
-        this.numbers = numbers;
+        this.numbers = List.copyOf(numbers);
     }
 
     public static Lotto from(List<Number> numbers) {
@@ -46,6 +46,5 @@ public class Lotto {
             }
         }
     }
-
-    // TODO: 추가 기능 구현
+    
 }
