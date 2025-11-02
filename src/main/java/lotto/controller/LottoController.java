@@ -1,6 +1,7 @@
 package lotto.controller;
 
 import static lotto.global.constans.MessageType.COST_REQUEST_MESSAGE;
+import static lotto.global.constans.MessageType.WINNING_REQUEST_MESSAGE;
 
 import lotto.application.LottoService;
 import lotto.domain.Cost;
@@ -48,5 +49,9 @@ public class LottoController {
     private void showLottos(Lottos lottos) {
         outputView.printlnMessage(LottoFormatter.lottoCount(lottos.getSize()));
         outputView.printLottos(lottos);
+    }
+
+    private void requestWinningNumbers() {
+        outputView.printMessage(WINNING_REQUEST_MESSAGE.getMessage());
     }
 }
