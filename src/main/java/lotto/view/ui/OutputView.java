@@ -11,8 +11,7 @@ public class OutputView {
     }
 
     public void printLottos(Lottos lottos) {
-        List<String> lines = LottoFormatter.lottoLines(lottos);
-        lines.forEach(System.out::println);
+        printLines(LottoFormatter.lottoLines(lottos));
     }
 
     public void printLines(List<String> lines) {
