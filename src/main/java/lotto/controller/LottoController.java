@@ -15,16 +15,19 @@ import lotto.global.Parser;
 import lotto.view.format.LottoFormatter;
 import lotto.view.ui.InputView;
 import lotto.view.ui.OutputView;
+import lotto.view.util.InputLoop;
 
 public class LottoController {
     private final OutputView outputView;
     private final InputView inputView;
     private final LottoService lottoService;
+    private final InputLoop loop;
 
-    public LottoController(OutputView outputView, InputView inputView, LottoService lottoService) {
+    public LottoController(OutputView outputView, InputView inputView, LottoService lottoService, InputLoop loop) {
         this.outputView = outputView;
         this.inputView = inputView;
         this.lottoService = lottoService;
+        this.loop = loop;
     }
 
     public void play() {
