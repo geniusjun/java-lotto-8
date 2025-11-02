@@ -2,7 +2,7 @@ package lotto.domain;
 
 import static lotto.global.constans.ErrorMessage.BONUS_NUMBER_DUPLICATE_ERROR;
 
-public final class Bonus {
+public class Bonus {
     private final Number value;
 
     private Bonus(Number value) {
