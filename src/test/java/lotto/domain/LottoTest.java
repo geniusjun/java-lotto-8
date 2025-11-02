@@ -66,6 +66,27 @@ class LottoTest {
         );
     }
 
+    @DisplayName("countMatches(other) 교집합 크기 계산 (대칭성 포함)")
+    @ParameterizedTest(name = "[countMatches] {0} ∩ {1} = {2}")
+    @MethodSource("matchArgs")
+    void countMatches_교집합(List<Number> a, List<Number> b, int expected) {
+        Lotto A = Lotto.from(a);
+        Lotto B = Lotto.from(b);
+        assertThat(A.countMatches(B)).isEqualTo(expected);
+        assertThat(B.countMatches(A)).isEqualTo(expected); // 대칭성 보장
+    }
+
+    // countMatches 테스트 헬퍼 메서드
+    static Stream<Arguments> matchArgs() {
+        return Stream.of(
+                Arguments.of(numbersOf(1, 2, 3, 4, 5, 6), numbersOf(1, 2, 3, 7, 8, 9), 3),
+                Arguments.of(numbersOf(1, 2, 3, 4, 5, 6), numbersOf(4, 5, 6, 7, 8, 9), 3),
+                Arguments.of(numbersOf(10, 11, 12, 13, 14, 15), numbersOf(1, 2, 3, 4, 5, 6), 0),
+                Arguments.of(numbersOf(40, 41, 42, 43, 44, 45), numbersOf(41, 42, 43, 44, 45, 1), 5),
+                Arguments.of(numbersOf(1, 3, 5, 7, 9, 11), numbersOf(2, 4, 6, 8, 10, 12), 0)
+        );
+    }
+
     // 테스트 헬퍼 메서드
     private static List<Number> numbersOf(Integer... values) {
         return Arrays.stream(values)
