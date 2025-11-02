@@ -4,10 +4,28 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
 import lotto.global.constans.ErrorMessage;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class LottoTest {
+
+    @DisplayName("로또 객체 생성에 성공한다(서로 다른 6개, 1~45)")
+    @Test
+    void 로또_생성_성공() {
+        // given // when
+        List<Number> numbers = List.of(
+                Number.valueOf(1),
+                Number.valueOf(8),
+                Number.valueOf(11),
+                Number.valueOf(31),
+                Number.valueOf(41),
+                Number.valueOf(42));
+        // then
+        Assertions.assertThatCode(() ->
+                Lotto.from(numbers)).doesNotThrowAnyException();
+    }
+
     @Test
     void 로또_번호의_개수가_6개가_넘어가면_예외가_발생한다() {
         assertThatThrownBy(() -> Lotto.from(List.of(
