@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import static lotto.global.constans.MessageType.BONUS_REQUEST_MESSAGE;
 import static lotto.global.constans.MessageType.COST_REQUEST_MESSAGE;
 import static lotto.global.constans.MessageType.WINNING_REQUEST_MESSAGE;
 
@@ -52,6 +53,14 @@ public class LottoController {
     }
 
     private void requestWinningNumbers() {
+
+    }
+
+    private void requestWinningNumber() {
         outputView.printMessage(WINNING_REQUEST_MESSAGE.getMessage());
+    }
+
+    private void requestBonusNumber() {
+        outputView.printlnMessage(BONUS_REQUEST_MESSAGE.getMessage());
     }
 }
