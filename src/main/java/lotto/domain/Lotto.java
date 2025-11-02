@@ -4,6 +4,7 @@ import static lotto.global.constans.ErrorMessage.INVALID_LOTTO_SIZE_ERROR;
 import static lotto.global.constans.ErrorMessage.NUMBER_DUPLICATE_ERROR;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Lotto {
     private final List<Number> numbers;
@@ -11,6 +12,10 @@ public class Lotto {
     private Lotto(List<Number> numbers) {
         Validator.validate(numbers);
         this.numbers = List.copyOf(numbers);
+    }
+
+    public Stream<Number> getStream() {
+        return numbers.stream();
     }
 
     public static Lotto from(List<Number> numbers) {
@@ -46,5 +51,5 @@ public class Lotto {
             }
         }
     }
-    
+
 }
