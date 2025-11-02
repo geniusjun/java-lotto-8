@@ -31,7 +31,7 @@ public class LottoController {
         Cost cost = requestCost();
         Lottos lottos = lottoBuy(cost);
         showLottos(lottos);
-        WinningNumbers numbers = requestWinningNumbers();
+        WinningNumbers numbers = WinningNumbers.of(requestWinningNumber(), requestBonusNumber());
     }
 
     private Cost requestCost() {
@@ -58,25 +58,27 @@ public class LottoController {
         outputView.printLottos(lottos);
     }
 
-    private WinningNumbers requestWinningNumbers() {
+
+    private Lotto requestWinningNumber() {
         try {
-            WinningNumbers numbers = WinningNumbers.of(requestWinningNumber(), requestBonusNumber());
-            return numbers;
+            outputView.printlnMessage(WINNING_REQUEST_MESSAGE.getMessage());
+            List<Number> numbers = Parser.stringToNumbers(inputView.enterMessage());
+            return Lotto.from(numbers);
         } catch (IllegalArgumentException e) {
             outputView.printlnMessage(e.getMessage());
-            return requestWinningNumbers();
+            return requestWinningNumber();
         }
     }
 
-    private Lotto requestWinningNumber() {
-        outputView.printlnMessage(WINNING_REQUEST_MESSAGE.getMessage());
-        List<Number> numbers = Parser.stringToNumbers(inputView.enterMessage());
-        return Lotto.from(numbers);
-    }
-
     private Number requestBonusNumber() {
-        outputView.printlnMessage(BONUS_REQUEST_MESSAGE.getMessage());
-        int number = Parser.StringToInt(inputView.enterMessage());
-        return Number.valueOf(number);
+        try {
+            outputView.printlnMessage(BONUS_REQUEST_MESSAGE.getMessage());
+            int number = Parser.StringToInt(inputView.enterMessage());
+            return Number.valueOf(number);
+        } catch (IllegalArgumentException e) {
+            outputView.printlnMessage(e.getMessage());
+            return requestBonusNumber();
+        }
+
     }
 }
