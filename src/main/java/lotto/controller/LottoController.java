@@ -10,6 +10,7 @@ import lotto.domain.Cost;
 import lotto.domain.Lotto;
 import lotto.domain.Lottos;
 import lotto.domain.Number;
+import lotto.domain.WinningNumbers;
 import lotto.global.Parser;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -30,6 +31,7 @@ public class LottoController {
         Cost cost = requestCost();
         Lottos lottos = lottoBuy(cost);
         showLottos(lottos);
+        WinningNumbers numbers = requestWinningNumbers();
     }
 
     private Cost requestCost() {
@@ -56,11 +58,13 @@ public class LottoController {
         outputView.printLottos(lottos);
     }
 
-    private void requestWinningNumbers() {
+    private WinningNumbers requestWinningNumbers() {
         try {
-
+            WinningNumbers numbers = WinningNumbers.of(requestWinningNumber(), requestBonusNumber());
+            return numbers;
         } catch (IllegalArgumentException e) {
-
+            outputView.printlnMessage(e.getMessage());
+            return requestWinningNumbers();
         }
     }
 
