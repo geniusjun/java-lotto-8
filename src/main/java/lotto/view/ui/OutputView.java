@@ -1,4 +1,4 @@
-package lotto.view;
+package lotto.view.ui;
 
 import java.util.List;
 import lotto.domain.Lottos;

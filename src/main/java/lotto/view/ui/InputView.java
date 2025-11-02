@@ -1,4 +1,4 @@
-package lotto.view;
+package lotto.view.ui;
 
 import static lotto.global.constans.ErrorMessage.BLANK_INPUT_ERROR;
 

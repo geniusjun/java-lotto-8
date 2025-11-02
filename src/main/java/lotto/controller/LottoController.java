@@ -12,9 +12,9 @@ import lotto.domain.Lottos;
 import lotto.domain.Number;
 import lotto.domain.WinningNumbers;
 import lotto.global.Parser;
-import lotto.view.InputView;
-import lotto.view.OutputView;
 import lotto.view.format.LottoFormatter;
+import lotto.view.ui.InputView;
+import lotto.view.ui.OutputView;
 
 public class LottoController {
     private final OutputView outputView;
