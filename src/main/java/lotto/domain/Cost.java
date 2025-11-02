@@ -20,6 +20,10 @@ public class Cost {
         return price / COST_UNIT.getValue();
     }
 
+    public int getPrice() {
+        return price;
+    }
+
     private static class Validator {
         public static int validate(String cost) {
             int value = Parser.stringToInt(cost);

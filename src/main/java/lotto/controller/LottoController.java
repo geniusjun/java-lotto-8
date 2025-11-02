@@ -11,8 +11,11 @@ import lotto.domain.Lotto;
 import lotto.domain.Lottos;
 import lotto.domain.Number;
 import lotto.domain.WinningNumbers;
+import lotto.domain.WinningResult;
+import lotto.domain.result.WinningType;
 import lotto.global.Parser;
 import lotto.view.format.LottoFormatter;
+import lotto.view.format.StatisticsFormatter;
 import lotto.view.ui.InputView;
 import lotto.view.ui.OutputView;
 import lotto.view.util.InputLoop;
@@ -37,6 +40,8 @@ public class LottoController {
         showLottos(lottos);
 
         WinningNumbers winningNumbers = askWinningNumbers();
+        WinningResult winningResult = WinningResult.of(lottos, winningNumbers);
+        printWinningStatistics(winningResult, cost);
     }
 
     private Cost askCost() {
@@ -71,4 +76,27 @@ public class LottoController {
         });
     }
 
+    private void printWinningStatistics(WinningResult result, Cost purchaseCost) {
+        printStatisticsHeader();
+        printCountLines(result);
+        printYieldLine(result, purchaseCost);
+    }
+
+    private void printStatisticsHeader() {
+        outputView.printlnMessage(StatisticsFormatter.header());
+        outputView.printlnMessage(StatisticsFormatter.divider());
+    }
+
+    private void printCountLines(WinningResult result) {
+        for (WinningType type : result.displayOrder()) {
+            outputView.printlnMessage(
+                    StatisticsFormatter.formatCountLine(type, result.countFor(type))
+            );
+        }
+    }
+
+    private void printYieldLine(WinningResult result, Cost purchaseCost) {
+        double yieldPercent = result.yieldPercentage(purchaseCost.getPrice());
+        outputView.printlnMessage(StatisticsFormatter.formatYield(yieldPercent));
+    }
 }
