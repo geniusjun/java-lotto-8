@@ -13,4 +13,11 @@ public class WinningNumbers {
         return new WinningNumbers(winning, bonus);
     }
 
+    public Lotto winning() {
+        return winning;
+    }
+
+    public Bonus bonus() {
+        return bonus;
+    }
 }
