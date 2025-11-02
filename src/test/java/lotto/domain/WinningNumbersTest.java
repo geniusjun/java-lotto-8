@@ -19,10 +19,10 @@ class WinningNumbersTest {
                 .toList();
     }
 
-    @DisplayName("일치하는 개수와 보너스 일치 여부에 따른 등수 결정 흐름 확인")
+    @DisplayName("일치하는 개수와 보너스 일치 여부에 따른 결과 흐름 확인")
     @ParameterizedTest(name = "당첨:[1,2,3,4,5,6] 보너스:7 / {0} → {1}")
     @MethodSource("cases")
-    void compare_and_map_to_winning_type(List<Number> ticket, WinningType expected) {
+    void 비교_확인결과_테스트(List<Number> ticket, WinningType expected) {
         Lotto winning = Lotto.from(nums(1, 2, 3, 4, 5, 6));
         WinningNumbers winningNumbers = WinningNumbers.of(winning, Bonus.of(Number.valueOf(7), winning));
 

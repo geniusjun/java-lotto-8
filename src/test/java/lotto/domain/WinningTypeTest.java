@@ -10,7 +10,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 public class WinningTypeTest {
 
-    @DisplayName("매칭 개수/보너스 조합에 따른 등수 결정")
+    @DisplayName("매칭 개수/보너스 조합에 따른 결과 결정")
     @ParameterizedTest(name = "matched={0}, bonus={1} → {2}")
     @CsvSource({
             "0,false,NONE",
@@ -22,7 +22,7 @@ public class WinningTypeTest {
             "6,false,FIRST",
             "6,true,FIRST"
     })
-    void from_rules(int matched, boolean bonus, WinningType expected) {
+    void 결과_테스트(int matched, boolean bonus, WinningType expected) {
         MatchResult result = MatchResult.of(matched, bonus);
         assertThat(WinningType.from(result)).isEqualTo(expected);
     }
