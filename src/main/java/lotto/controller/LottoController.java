@@ -58,7 +58,7 @@ public class LottoController {
 
     private void requestWinningNumbers() {
         try {
-            
+
         } catch (IllegalArgumentException e) {
 
         }
@@ -70,7 +70,9 @@ public class LottoController {
         return Lotto.from(numbers);
     }
 
-    private void requestBonusNumber() {
+    private Number requestBonusNumber() {
         outputView.printlnMessage(BONUS_REQUEST_MESSAGE.getMessage());
+        int number = Parser.StringToInt(inputView.enterMessage());
+        return Number.valueOf(number);
     }
 }
