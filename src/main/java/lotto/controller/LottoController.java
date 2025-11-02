@@ -4,9 +4,13 @@ import static lotto.global.constans.MessageType.BONUS_REQUEST_MESSAGE;
 import static lotto.global.constans.MessageType.COST_REQUEST_MESSAGE;
 import static lotto.global.constans.MessageType.WINNING_REQUEST_MESSAGE;
 
+import java.util.List;
 import lotto.application.LottoService;
 import lotto.domain.Cost;
+import lotto.domain.Lotto;
 import lotto.domain.Lottos;
+import lotto.domain.Number;
+import lotto.global.Parser;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 import lotto.view.format.LottoFormatter;
@@ -53,11 +57,17 @@ public class LottoController {
     }
 
     private void requestWinningNumbers() {
+        try {
+            
+        } catch (IllegalArgumentException e) {
 
+        }
     }
 
-    private void requestWinningNumber() {
+    private Lotto requestWinningNumber() {
         outputView.printMessage(WINNING_REQUEST_MESSAGE.getMessage());
+        List<Number> numbers = Parser.stringToNumbers(inputView.enterMessage());
+        return Lotto.from(numbers);
     }
 
     private void requestBonusNumber() {
