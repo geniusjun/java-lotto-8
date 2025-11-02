@@ -69,7 +69,7 @@ public class LottoController {
     }
 
     private Lotto requestWinningNumber() {
-        outputView.printMessage(WINNING_REQUEST_MESSAGE.getMessage());
+        outputView.printlnMessage(WINNING_REQUEST_MESSAGE.getMessage());
         List<Number> numbers = Parser.stringToNumbers(inputView.enterMessage());
         return Lotto.from(numbers);
     }

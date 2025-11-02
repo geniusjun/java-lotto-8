@@ -14,8 +14,4 @@ public class OutputView {
         List<String> lines = LottoFormatter.lottoLines(lottos);
         lines.forEach(System.out::println);
     }
-
-    public void printMessage(String message) {
-        System.out.print(message);
-    }
 }
