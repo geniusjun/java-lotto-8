@@ -30,26 +30,42 @@ public class LottoController {
     }
 
     public void play() {
-        Cost cost = loop.ask(COST_REQUEST_MESSAGE.getMessage(),
-                () -> Cost.from(inputView.enterMessage()));
-        Lottos lottos = lottoService.buyLottos(cost);
+
+        Cost cost = askCost();
+        Lottos lottos = buy(cost);
         showLottos(lottos);
 
-        Lotto winning = loop.ask(WINNING_REQUEST_MESSAGE.getMessage(),
-                () -> Lotto.from(Parser.stringToNumbers(inputView.enterMessage())));
+        WinningNumbers winningNumbers = askWinningNumbers();
+    }
 
-        Number bonus = loop.ask(BONUS_REQUEST_MESSAGE.getMessage(), () -> {
-            Number b = Number.valueOf(Parser.StringToInt(inputView.enterMessage()));
-            WinningNumbers.of(winning, b);
-            return b;
-        });
+    private Cost askCost() {
+        return loop.ask(COST_REQUEST_MESSAGE.getMessage(),
+                () -> Cost.from(inputView.enterMessage()));
+    }
 
-        WinningNumbers numbers = WinningNumbers.of(winning, bonus);
+    private Lottos buy(Cost cost) {
+        return lottoService.buyLottos(cost);
     }
 
     private void showLottos(Lottos lottos) {
         outputView.printlnMessage(LottoFormatter.lottoCount(lottos.getSize()));
         outputView.printLottos(lottos);
+    }
+
+    private WinningNumbers askWinningNumbers() {
+        Lotto winning = askWinningLotto();
+        Number bonus = askBonusNumber(winning);
+        return WinningNumbers.of(winning, bonus);
+    }
+
+    private Lotto askWinningLotto() {
+        return loop.ask(WINNING_REQUEST_MESSAGE.getMessage(),
+                () -> Lotto.from(Parser.stringToNumbers(inputView.enterMessage())));
+    }
+
+    private Number askBonusNumber(Lotto winning) {
+        return loop.ask(BONUS_REQUEST_MESSAGE.getMessage(),
+                () -> Number.valueOf(Parser.stringToInt(inputView.enterMessage())));
     }
 
 }

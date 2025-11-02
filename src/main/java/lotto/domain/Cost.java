@@ -22,7 +22,7 @@ public class Cost {
 
     private static class Validator {
         public static int validate(String cost) {
-            int value = Parser.StringToInt(cost);
+            int value = Parser.stringToInt(cost);
             validateUnit(value);
             return value;
         }

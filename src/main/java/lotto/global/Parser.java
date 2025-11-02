@@ -7,7 +7,7 @@ import java.util.List;
 import lotto.domain.Number;
 
 public class Parser {
-    public static int StringToInt(String input) {
+    public static int stringToInt(String input) {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
@@ -18,7 +18,7 @@ public class Parser {
     public static List<Number> stringToNumbers(String s) {
         return Arrays.stream(s.split(","))
                 .map(String::trim)
-                .map(Parser::StringToInt)
+                .map(Parser::stringToInt)
                 .map(Number::valueOf)
                 .toList();
     }
