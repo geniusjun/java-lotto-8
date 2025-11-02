@@ -7,6 +7,7 @@ import lotto.domain.Cost;
 import lotto.domain.Lottos;
 import lotto.view.InputView;
 import lotto.view.OutputView;
+import lotto.view.format.LottoFormatter;
 
 public class LottoController {
     private final OutputView outputView;
@@ -45,6 +46,7 @@ public class LottoController {
     }
 
     private void showLottos(Lottos lottos) {
-
+        outputView.printlnMessage(LottoFormatter.lottoCount(lottos.getSize()));
+        outputView.printLottos(lottos);
     }
 }

@@ -17,4 +17,8 @@ public class Lottos {
     public Stream<Lotto> getStream() {
         return lottos.stream();
     }
+
+    public int getSize() {
+        return lottos.size();
+    }
 }
