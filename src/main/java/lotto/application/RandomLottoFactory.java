@@ -22,7 +22,6 @@ public class RandomLottoFactory implements LottoFactory {
 
     private static List<Number> IntegerToNumber(List<Integer> numbers) {
         return numbers.stream()
-                .sorted()
                 .map(Number::valueOf)
                 .toList();
     }
