@@ -9,6 +9,10 @@ public class Bonus {
         this.value = value;
     }
 
+    public Number getValue() {
+        return value;
+    }
+
     public static Bonus of(Number bonus, Lotto winning) {
         Validator.validateDuplicate(bonus, winning);
         return new Bonus(bonus);

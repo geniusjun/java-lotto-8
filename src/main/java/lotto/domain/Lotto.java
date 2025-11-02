@@ -14,12 +14,22 @@ public class Lotto {
         this.numbers = List.copyOf(numbers);
     }
 
-    public Stream<Number> getStream() {
-        return numbers.stream();
-    }
-
     public static Lotto from(List<Number> numbers) {
         return new Lotto(numbers);
+    }
+
+    public boolean contains(Number n) {
+        return numbers.contains(n);
+    }
+
+    public int countMatches(Lotto other) {
+        return (int) numbers.stream()
+                .filter(other::contains)
+                .count();
+    }
+
+    public Stream<Number> getStream() {
+        return numbers.stream();
     }
 
     private static class Validator {

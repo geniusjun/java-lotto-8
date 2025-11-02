@@ -13,11 +13,9 @@ public class WinningNumbers {
         return new WinningNumbers(winning, bonus);
     }
 
-    public Lotto winning() {
-        return winning;
-    }
-
-    public Bonus bonus() {
-        return bonus;
+    public MatchResult compare(Lotto lotto) {
+        int count = lotto.countMatches(this.winning);
+        boolean bonus = lotto.contains(this.bonus.getValue());
+        return MatchResult.of(count, bonus);
     }
 }
