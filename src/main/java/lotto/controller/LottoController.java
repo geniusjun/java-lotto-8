@@ -1,8 +1,8 @@
 package lotto.controller;
 
-import static lotto.global.constans.MessageType.BONUS_REQUEST_MESSAGE;
-import static lotto.global.constans.MessageType.COST_REQUEST_MESSAGE;
-import static lotto.global.constans.MessageType.WINNING_REQUEST_MESSAGE;
+import static lotto.global.constants.MessageType.BONUS_REQUEST_MESSAGE;
+import static lotto.global.constants.MessageType.COST_REQUEST_MESSAGE;
+import static lotto.global.constants.MessageType.WINNING_REQUEST_MESSAGE;
 
 import lotto.application.LottoService;
 import lotto.domain.Bonus;

@@ -1,7 +1,7 @@
-package lotto.global.constans;
+package lotto.global.constants;
 
-import static lotto.global.constans.NumberType.COST_UNIT;
-import static lotto.global.constans.NumberType.LOTTO_SIZE;
+import static lotto.global.constants.NumberType.COST_UNIT;
+import static lotto.global.constants.NumberType.LOTTO_SIZE;
 
 public enum ErrorMessage {
     BLANK_INPUT_ERROR("빈 문자열이 입력되었습니다."),

@@ -1,4 +1,4 @@
-package lotto.global.constans;
+package lotto.global.constants;
 
 public enum NumberType {
     COST_UNIT(1000),
@@ -6,7 +6,7 @@ public enum NumberType {
     MAX_LOTTO_NUMBER(45),
     LOTTO_SIZE(6),
     ;
-    
+
     private final int value;
 
     NumberType(int value) {

@@ -1,6 +1,6 @@
 package lotto.view.ui;
 
-import static lotto.global.constans.ErrorMessage.BLANK_INPUT_ERROR;
+import static lotto.global.constants.ErrorMessage.BLANK_INPUT_ERROR;
 
 import camp.nextstep.edu.missionutils.Console;
 

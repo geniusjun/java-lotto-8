@@ -1,7 +1,7 @@
 package lotto.domain;
 
-import static lotto.global.constans.ErrorMessage.INVALID_LOTTO_SIZE_ERROR;
-import static lotto.global.constans.ErrorMessage.NUMBER_DUPLICATE_ERROR;
+import static lotto.global.constants.ErrorMessage.INVALID_LOTTO_SIZE_ERROR;
+import static lotto.global.constants.ErrorMessage.NUMBER_DUPLICATE_ERROR;
 
 import java.util.List;
 import java.util.stream.Stream;

@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import static lotto.global.constans.ErrorMessage.BONUS_NUMBER_DUPLICATE_ERROR;
+import static lotto.global.constants.ErrorMessage.BONUS_NUMBER_DUPLICATE_ERROR;
 
 public class Bonus {
     private final Number value;

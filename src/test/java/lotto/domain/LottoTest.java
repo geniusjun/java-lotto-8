@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
-import lotto.global.constans.ErrorMessage;
+import lotto.global.constants.ErrorMessage;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

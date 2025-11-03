@@ -1,6 +1,6 @@
 package lotto.global;
 
-import static lotto.global.constans.ErrorMessage.NUMBER_FORMAT_ERROR;
+import static lotto.global.constants.ErrorMessage.NUMBER_FORMAT_ERROR;
 
 import java.util.Arrays;
 import java.util.List;

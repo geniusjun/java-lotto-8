@@ -1,8 +1,8 @@
 package lotto.application;
 
-import static lotto.global.constans.NumberType.LOTTO_SIZE;
-import static lotto.global.constans.NumberType.MAX_LOTTO_NUMBER;
-import static lotto.global.constans.NumberType.MIN_LOTTO_NUMBER;
+import static lotto.global.constants.NumberType.LOTTO_SIZE;
+import static lotto.global.constants.NumberType.MAX_LOTTO_NUMBER;
+import static lotto.global.constants.NumberType.MIN_LOTTO_NUMBER;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;

@@ -1,10 +1,10 @@
 package lotto.domain;
 
-import static lotto.global.constans.NumberType.MAX_LOTTO_NUMBER;
-import static lotto.global.constans.NumberType.MIN_LOTTO_NUMBER;
+import static lotto.global.constants.NumberType.MAX_LOTTO_NUMBER;
+import static lotto.global.constants.NumberType.MIN_LOTTO_NUMBER;
 
 import java.util.Objects;
-import lotto.global.constans.ErrorMessage;
+import lotto.global.constants.ErrorMessage;
 
 public class Number {
     private int value;

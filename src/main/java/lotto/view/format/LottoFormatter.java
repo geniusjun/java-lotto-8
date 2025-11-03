@@ -1,6 +1,6 @@
 package lotto.view.format;
 
-import static lotto.global.constans.MessageType.LOTTO_COUNT_MESSAGE;
+import static lotto.global.constants.MessageType.LOTTO_COUNT_MESSAGE;
 
 import java.util.List;
 import java.util.stream.Collectors;

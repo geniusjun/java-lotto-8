@@ -1,7 +1,7 @@
 package lotto.domain;
 
-import static lotto.global.constans.ErrorMessage.INVALID_UNIT_ERROR;
-import static lotto.global.constans.NumberType.COST_UNIT;
+import static lotto.global.constants.ErrorMessage.INVALID_UNIT_ERROR;
+import static lotto.global.constants.NumberType.COST_UNIT;
 
 import lotto.global.Parser;
 
