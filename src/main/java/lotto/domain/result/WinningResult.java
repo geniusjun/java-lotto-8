@@ -1,16 +1,18 @@
-package lotto.domain;
+package lotto.domain.result;
 
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
-import lotto.domain.result.WinningType;
+import lotto.domain.Lotto;
+import lotto.domain.Lottos;
+import lotto.domain.WinningNumbers;
 
 public class WinningResult {
     private static final List<WinningType> DISPLAY_ORDER = List.of(
             WinningType.FIFTH, WinningType.FOURTH, WinningType.THIRD,
             WinningType.SECOND, WinningType.FIRST
     );
-    
+
     private final EnumMap<WinningType, Integer> countsByType = new EnumMap<>(WinningType.class);
 
     private WinningResult() {

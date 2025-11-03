@@ -11,7 +11,7 @@ import lotto.domain.Lotto;
 import lotto.domain.Lottos;
 import lotto.domain.Number;
 import lotto.domain.WinningNumbers;
-import lotto.domain.WinningResult;
+import lotto.domain.result.WinningResult;
 import lotto.global.Parser;
 import lotto.view.format.LottoFormatter;
 import lotto.view.format.StatisticsFormatter;

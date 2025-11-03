@@ -3,7 +3,7 @@ package lotto.view.format;
 import java.util.ArrayList;
 import java.util.List;
 import lotto.domain.Cost;
-import lotto.domain.WinningResult;
+import lotto.domain.result.WinningResult;
 import lotto.domain.result.WinningType;
 
 public class StatisticsFormatter {
