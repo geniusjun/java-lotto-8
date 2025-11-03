@@ -10,6 +10,7 @@ public class StatisticsFormatter {
     public static final String HEADER = "당첨 통계";
     public static final String DIVIDER = "---";
     public static final String YIELD_TEMPLATE = "총 수익률은 %.1f%%입니다.";
+    private static final String COUNT_LINE_FORMAT = "%s - %d개";
 
     private StatisticsFormatter() {
     }
@@ -19,7 +20,7 @@ public class StatisticsFormatter {
     }
 
     public static String formatCountLine(WinningType type, int count) {
-        return type.label() + " - " + count + "개";
+        return String.format(COUNT_LINE_FORMAT, type.label(), count);
     }
 
     /**
