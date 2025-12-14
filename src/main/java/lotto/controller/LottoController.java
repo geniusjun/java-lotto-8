@@ -1,7 +1,13 @@
 package lotto.controller;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.function.Supplier;
 import lotto.domain.Cost;
+import lotto.domain.Lotto;
+import lotto.domain.Lottos;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -16,7 +22,8 @@ public class LottoController {
 
     public void run() {
         Cost cost = askCost();
-        showBuyResult(cost);
+        Lottos lottos = makeLottos(cost);
+        outputView.printLottos(lottos);
     }
 
     private Cost askCost() {
@@ -25,8 +32,15 @@ public class LottoController {
                 () -> Cost.from(inputView.enterMessage()));
     }
 
-    private void showBuyResult(Cost cost) {
+    private Lottos makeLottos(Cost cost) {
         outputView.printLottoCount(cost.getCount());
+        List<Lotto> lottos = new ArrayList<>();
+        for (int i = 0; i < cost.getCount(); i++) {
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            numbers.sort(Comparator.naturalOrder());
+            lottos.add(Lotto.from(numbers));
+        }
+        return Lottos.from(lottos);
     }
 
     private <T> T repeatUntilSuccessWithReturn(Supplier<T> supplier) {

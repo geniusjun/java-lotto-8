@@ -1,5 +1,7 @@
 package lotto.view;
 
+import lotto.domain.Lottos;
+
 public class OutputView {
 
     public void printBuyCost() {
@@ -12,5 +14,18 @@ public class OutputView {
 
     public void printErrorMessage(String errorMessage) {
         System.out.println(errorMessage);
+    }
+
+    public void printLottos(Lottos lottos) {
+        for (int i = 0; i < lottos.getLottos().size(); i++) {
+            System.out.print("[");
+            for (int j = 0; j < 6; j++) {
+                System.out.print(lottos.getLottos().get(i).getNumbers().get(j));
+                if (j != 5) {
+                    System.out.print(", ");
+                }
+            }
+            System.out.println("]");
+        }
     }
 }
