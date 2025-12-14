@@ -54,4 +54,10 @@ public class Match {
     public void plusSix() {
         this.six++;
     }
+
+    public int getEarns() {
+        int earns = (5000 * this.three) + (50000 * this.four) + (1500000 * this.five) + (30000000 * this.fiveBonus)
+                + (2000000000 * this.six);
+        return earns;
+    }
 }

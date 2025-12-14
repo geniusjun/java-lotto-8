@@ -2,7 +2,6 @@ package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.function.Supplier;
 import lotto.domain.Cost;
@@ -29,6 +28,7 @@ public class LottoController {
         int bonusNumber = askBonusNumber();
         Match match = lottos.compareLottos(winningLotto, bonusNumber);
         outputView.printMatchResult(match);
+        outputView.printEarns(((double) match.getEarns() / cost.getPrice()) * 100);
     }
 
     private Cost askCost() {
@@ -41,8 +41,9 @@ public class LottoController {
         outputView.printLottoCount(cost.getCount());
         List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < cost.getCount(); i++) {
-            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            numbers.sort(Comparator.naturalOrder());
+            List<Integer> random = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            ArrayList<Integer> numbers = new ArrayList<>(random);
+            numbers.sort(Integer::compareTo);
             lottos.add(Lotto.from(numbers));
         }
         return Lottos.from(lottos);

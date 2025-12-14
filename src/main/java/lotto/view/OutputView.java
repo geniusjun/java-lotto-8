@@ -39,11 +39,17 @@ public class OutputView {
     }
 
     public void printMatchResult(Match match) {
-        System.out.println("당첨 통계\n---");
-        System.out.println("3개 일치 (5,000원) - " + match.getThree() + "개\n"
-                + "4개 일치 (50,000원) - " + match.getFour() + "개\n"
-                + "5개 일치 (1,500,000원) - " + match.getFive() + "개\n"
-                + "5개 일치, 보너스 볼 일치 (30,000,000원) - " + match.getFiveBonus() + "개\n"
-                + "6개 일치 (2,000,000,000원) - " + match.getSix() + "개");
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        System.out.println("3개 일치 (5,000원) - " + match.getThree() + "개");
+        System.out.println("4개 일치 (50,000원) - " + match.getFour() + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + match.getFive() + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + match.getFiveBonus() + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + match.getSix() + "개");
+    }
+
+    public void printEarns(double earns) {
+        String result = String.format("%.1f", earns);
+        System.out.println("총 수익률은 " + result + "%입니다.");
     }
 }

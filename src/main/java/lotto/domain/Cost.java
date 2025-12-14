@@ -13,6 +13,10 @@ public class Cost {
         return price / 1000;
     }
 
+    public int getPrice() {
+        return price;
+    }
+
     public static Cost from(String price) {
         validateCost(price);
         return new Cost(Integer.parseInt(price));
