@@ -8,6 +8,7 @@ import java.util.function.Supplier;
 import lotto.domain.Cost;
 import lotto.domain.Lotto;
 import lotto.domain.Lottos;
+import lotto.domain.Match;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -26,6 +27,8 @@ public class LottoController {
         outputView.printLottos(lottos);
         Lotto winningLotto = askWinningLotto();
         int bonusNumber = askBonusNumber();
+        Match match = lottos.compareLottos(winningLotto, bonusNumber);
+        outputView.printMatchResult(match);
     }
 
     private Cost askCost() {
