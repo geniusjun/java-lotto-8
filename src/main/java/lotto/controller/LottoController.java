@@ -16,12 +16,17 @@ public class LottoController {
 
     public void run() {
         Cost cost = askCost();
+        showBuyResult(cost);
     }
 
     private Cost askCost() {
         outputView.printBuyCost();
         return repeatUntilSuccessWithReturn(
                 () -> Cost.from(inputView.enterMessage()));
+    }
+
+    private void showBuyResult(Cost cost) {
+        outputView.printLottoCount(cost.getCount());
     }
 
     private <T> T repeatUntilSuccessWithReturn(Supplier<T> supplier) {

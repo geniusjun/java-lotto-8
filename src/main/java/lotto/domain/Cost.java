@@ -9,6 +9,10 @@ public class Cost {
         this.price = price;
     }
 
+    public int getCount() {
+        return price / 1000;
+    }
+
     public static Cost from(String price) {
         validateCost(price);
         return new Cost(Integer.parseInt(price));
