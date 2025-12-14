@@ -24,6 +24,7 @@ public class LottoController {
         Cost cost = askCost();
         Lottos lottos = makeLottos(cost);
         outputView.printLottos(lottos);
+        Lotto winningLotto = askWinningLotto();
     }
 
     private Cost askCost() {
@@ -41,6 +42,21 @@ public class LottoController {
             lottos.add(Lotto.from(numbers));
         }
         return Lottos.from(lottos);
+    }
+
+    private Lotto askWinningLotto() {
+        outputView.printWinningMessage();
+        return repeatUntilSuccessWithReturn(
+                () -> Lotto.from(makeWinningLotto()));
+    }
+
+    private List<Integer> makeWinningLotto() {
+        List<Integer> winningLotto = new ArrayList<>();
+        String[] input = inputView.enterMessage().split(",");
+        for (int i = 0; i < input.length; i++) {
+            winningLotto.add(Integer.parseInt(input[i]));
+        }
+        return winningLotto;
     }
 
     private <T> T repeatUntilSuccessWithReturn(Supplier<T> supplier) {
