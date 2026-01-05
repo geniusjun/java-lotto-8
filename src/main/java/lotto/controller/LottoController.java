@@ -26,6 +26,7 @@ public class LottoController {
         showBuyLottos(cost, lottos);
 
         Lotto lotto = makeWinningLotto();
+        int bonusNumber = makeBonusNumber();
     }
 
     private Cost makeCost() {
@@ -54,6 +55,11 @@ public class LottoController {
         outputView.printlnMessage(Message.INPUT_WINNING_NUMBER.getMessage());
         return repeatUntilSuccessWithReturn(() ->
                 new Lotto(makeList(inputView.readLine())));
+    }
+
+    private int makeBonusNumber() {
+        outputView.printlnMessage(Message.INPUT_BONUS_NUMBER.getMessage());
+        return Integer.parseInt(inputView.readLine());
     }
 
 
