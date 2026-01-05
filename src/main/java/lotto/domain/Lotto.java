@@ -7,13 +7,18 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validateSize(numbers);
-        validateDuplicate(numbers);
+        validateLotto(numbers);
         this.numbers = numbers.stream().sorted().toList();
     }
 
     public List<Integer> getNumbers() {
         return numbers;
+    }
+
+    private void validateLotto(List<Integer> numbers) {
+        validateSize(numbers);
+        validateDuplicate(numbers);
+        validateLottoNumber(numbers);
     }
 
     private void validateSize(List<Integer> numbers) {
@@ -39,5 +44,13 @@ public class Lotto {
                 .distinct()
                 .count();
 
+    }
+
+    private void validateLottoNumber(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            if (number < 1 || number > 45) {
+                throw new IllegalArgumentException(ErrorMessage.INVALID_LOTTO_NUMBER.getMessage());
+            }
+        }
     }
 }

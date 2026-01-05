@@ -1,7 +1,10 @@
 package lotto.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Supplier;
 import lotto.domain.Cost;
+import lotto.domain.Lotto;
 import lotto.domain.Lottos;
 import lotto.util.Message;
 import lotto.view.InputView;
@@ -22,7 +25,7 @@ public class LottoController {
 
         showBuyLottos(cost, lottos);
 
-        outputView.printlnMessage(Message.INPUT_WINNING_NUMBER.getMessage());
+        Lotto lotto = makeWinningLotto();
     }
 
     private Cost makeCost() {
@@ -36,6 +39,21 @@ public class LottoController {
         for (int i = 0; i < lottos.getLottos().size(); i++) {
             outputView.printBuyLotto(lottos.getLottos().get(i));
         }
+    }
+
+    private List<Integer> makeList(String input) {
+        List<Integer> lotto = new ArrayList<>();
+        String[] inputs = input.split(",");
+        for (int i = 0; i < inputs.length; i++) {
+            lotto.add(Integer.parseInt(inputs[i]));
+        }
+        return lotto;
+    }
+
+    private Lotto makeWinningLotto() {
+        outputView.printlnMessage(Message.INPUT_WINNING_NUMBER.getMessage());
+        return repeatUntilSuccessWithReturn(() ->
+                new Lotto(makeList(inputView.readLine())));
     }
 
 
