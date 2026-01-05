@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.util.Message;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -13,6 +14,7 @@ public class LottoController {
     }
 
     public void run() {
+        outputView.printlnMessage(Message.INPUT_BUY_LOTTO.getMessage());
     }
 
 }
