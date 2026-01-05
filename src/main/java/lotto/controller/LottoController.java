@@ -17,6 +17,8 @@ public class LottoController {
 
     public void run() {
         Cost cost = makeCost();
+
+        outputView.printlnMessage(Message.INPUT_WINNING_NUMBER.getMessage());
     }
 
     private Cost makeCost() {
