@@ -17,6 +17,14 @@ public class Cost {
         return price;
     }
 
+    public float getEarning(int[] result) {
+        int sum = 0;
+        sum = result[3] * Match.THREE.getMoney() + result[4] * Match.FOUR.getMoney()
+                + result[5] * Match.FIVE.getMoney() + result[6] * Match.SIX.getMoney()
+                + result[7] * Match.FIVE_BONUS.getMoney();
+        return (float) sum / price * 100;
+    }
+
     private static int validateInput(String input) {
         try {
             return validatePrice(Integer.parseInt(input));

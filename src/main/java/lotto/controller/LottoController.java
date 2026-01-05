@@ -6,6 +6,7 @@ import java.util.function.Supplier;
 import lotto.domain.Cost;
 import lotto.domain.Lotto;
 import lotto.domain.Lottos;
+import lotto.domain.WinningNumbers;
 import lotto.util.Message;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -24,9 +25,11 @@ public class LottoController {
         Lottos lottos = Lottos.from(cost);
 
         showBuyLottos(cost, lottos);
+        WinningNumbers winningNumbers = WinningNumbers.from(makeWinningLotto(), makeBonusNumber());
 
-        Lotto lotto = makeWinningLotto();
-        int bonusNumber = makeBonusNumber();
+        int[] result = makeResult(lottos, winningNumbers);
+        showResult(result, cost);
+
     }
 
     private Cost makeCost() {
@@ -45,8 +48,8 @@ public class LottoController {
     private List<Integer> makeList(String input) {
         List<Integer> lotto = new ArrayList<>();
         String[] inputs = input.split(",");
-        for (int i = 0; i < inputs.length; i++) {
-            lotto.add(Integer.parseInt(inputs[i]));
+        for (String s : inputs) {
+            lotto.add(Integer.parseInt(s));
         }
         return lotto;
     }
@@ -60,6 +63,15 @@ public class LottoController {
     private int makeBonusNumber() {
         outputView.printlnMessage(Message.INPUT_BONUS_NUMBER.getMessage());
         return Integer.parseInt(inputView.readLine());
+    }
+
+    private int[] makeResult(Lottos lottos, WinningNumbers winningNumbers) {
+        return lottos.compareLottos(winningNumbers);
+    }
+
+    private void showResult(int[] result, Cost cost) {
+        outputView.printResult(result);
+        outputView.printEarning(cost.getEarning(result));
     }
 
 

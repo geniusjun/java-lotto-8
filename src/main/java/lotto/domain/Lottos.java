@@ -28,4 +28,43 @@ public class Lottos {
         return lottoBucket;
     }
 
+    public int[] compareLottos(WinningNumbers winningNumbers) {
+        int[] result = new int[8];
+        for (int i = 0; i < lottos.size(); i++) {
+            result[compareLotto(lottos.get(i), winningNumbers)]++;
+        }
+        return result;
+    }
+
+    private int compareLotto(Lotto lotto, WinningNumbers winningNumbers) {
+        int count = 0;
+        for (int i = 0; i < lotto.getNumbers().size(); i++) {
+            if (isEqualNumber(lotto.getNumbers().get(i), winningNumbers)) {
+                count++;
+            }
+        }
+        if (count == 5 && checkBonus(lotto, winningNumbers)) {
+            count += 2;
+        }
+        return count;
+    }
+
+    private boolean isEqualNumber(int number, WinningNumbers winningNumbers) {
+        for (int i = 0; i < winningNumbers.getLotto().getNumbers().size(); i++) {
+            if (number == winningNumbers.getLotto().getNumbers().get(i)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean checkBonus(Lotto lotto, WinningNumbers winningNumbers) {
+        for (int i = 0; i < lotto.getNumbers().size(); i++) {
+            if (lotto.getNumbers().get(i) == winningNumbers.getBonusNumber()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
