@@ -13,6 +13,10 @@ public class Cost {
         return new Cost(validateInput(input));
     }
 
+    public int getPrice() {
+        return price;
+    }
+
     private static int validateInput(String input) {
         try {
             return validatePrice(Integer.parseInt(input));
